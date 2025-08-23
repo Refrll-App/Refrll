@@ -1,0 +1,14 @@
+# Environment files
+.env
+.env.local
+frontend/.env
+server/.env
+
+# Dependency directories
+node_modules/
+frontend/node_modules/
+server/node_modules/
+
+# Build outputs
+dist/
+build/
