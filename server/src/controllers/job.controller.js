@@ -161,7 +161,7 @@ export const createReferralJob = async (req, res) => {
     
     res.status(201).json(job);
   } catch (err) {
-    res.status(400).json({ message: err.message || 'Failed to create job' });
+    res.status(400).json({ message: "Complete your Profile" || 'Failed to create job' });
   }
 };
 

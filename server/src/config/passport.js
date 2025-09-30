@@ -17,7 +17,7 @@ passport.use(new GoogleStrategy({
            type: 'employee',    // ✅ Required field
             roles: ['seeker','referrer'],
            currentRole :'seeker',
-          
+            isVerified : true,
         provider: 'google'  
     });
   }

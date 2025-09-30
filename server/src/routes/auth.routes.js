@@ -57,11 +57,6 @@ router.get('/google/callback',
     const user = req.user;
 
 
-       // If the user is signing in via Google, mark them as verified
-      if (!user.isVerified) {
-        user.isVerified = true;
-        await user.save();
-      }
 
     // Issue your access + refresh token here
     // Set in HttpOnly cookies or return to frontend
