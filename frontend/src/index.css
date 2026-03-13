@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/* ── Design tokens ──────────────────────────────────────────────────────────
+   Tailwind v4 reads @theme and generates bg-*, text-*, border-* utilities
+   plus ALL variants (hover:, focus:, md:, lg:, active:) automatically.
+   
+   Naming convention: --color-{name} → bg-{name}, text-{name}, border-{name}
+   ────────────────────────────────────────────────────────────────────────── */
+@theme {
+  /* Text / foreground */
+  --color-ink:            #0f0e17;
+  --color-ink-muted:      #4a4860;
+  --color-ink-faint:      #a8a4c0;
+
+  /* Surfaces */
+  --color-surface:        #faf9ff;
+  --color-surface-alt:    #f2f0fb;
+
+  /* "default" = our standard border color — generates border-default, bg-default */
+  --color-default:        #e4e0f5;
+
+  /* Accent (violet) */
+  --color-accent:         #6c47ff;
+  --color-accent-hover:   #5535e0;
+  --color-accent-soft:    #ede8ff;
+
+  /* Semantic soft backgrounds */
+  --color-emerald-soft:   #e0faf3;
+  --color-amber-soft:     #fef3c7;
+  --color-rose-soft:      #ffe4e8;
+
+  /* Fonts */
+  --font-display: "Syne", sans-serif;
+  --font-body:    "DM Sans", sans-serif;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    line-height: 1.2;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+
+  .shadow-card {
+    box-shadow: 0 1px 3px rgba(15,14,23,0.04), 0 4px 16px rgba(108,71,255,0.06);
+  }
+  .shadow-card-hover {
+    box-shadow: 0 4px 12px rgba(15,14,23,0.06), 0 8px 32px rgba(108,71,255,0.12);
+  }
+
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--color-surface-alt) 25%,
+      var(--color-default) 50%,
+      var(--color-surface-alt) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 6px;
+  }
+
+  .slide-up { animation: slideUp 0.25s ease-out; }
+  .fade-in  { animation: fadeIn 0.35s ease-out; }
+
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-accent), #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* iOS home indicator clearance */
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
