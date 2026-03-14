@@ -2,18 +2,37 @@ import nodemailer from "nodemailer";
 
 let transporter = null;
 
+// const getTransporter = () => {
+//   if (!transporter) {
+//     transporter = nodemailer.createTransport({
+//       service: "gmail",
+//       auth: {
+//         user: process.env.GMAIL_USER,       // refrllteam@gmail.com
+//         pass: process.env.GMAIL_APP_PASSWORD, // 16-char app password from Google
+//       },
+//     });
+//   }
+//   return transporter;
+// };
+
+
+
 const getTransporter = () => {
   if (!transporter) {
     transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      family: 4, // force IPv4 (important for Render)
       auth: {
-        user: process.env.GMAIL_USER,       // refrllteam@gmail.com
-        pass: process.env.GMAIL_APP_PASSWORD, // 16-char app password from Google
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
       },
     });
   }
   return transporter;
 };
+
 
 const FROM = `"Refrll" <${process.env.GMAIL_USER || "refrllteam@gmail.com"}>`;
 
