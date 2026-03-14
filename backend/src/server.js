@@ -22,6 +22,8 @@ connectDB();
 
 const app = express();
 
+app.set("trust proxy", 1); 
+
 app.use(helmet({ contentSecurityPolicy: false })); // CSP off so badge HTML page loads correctly
 app.use(cors({
   origin: process.env.CLIENT_URL,
