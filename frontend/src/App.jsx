@@ -105,6 +105,7 @@ import { selectIsAuthenticated, selectCurrentUser } from "./features/auth/authSl
 import ProtectedRoute from "./components/shared/ProtectedRoute.jsx";
 import AppLayout from "./components/layout/AppLayout.jsx";
 import CookieBanner from "./components/shared/CookieBanner.jsx";
+import PageLoader from "./components/ui/PageLoader.jsx";
 
 const LandingPage       = lazy(() => import("./pages/LandingPage.jsx"));
 const LoginPage         = lazy(() => import("./pages/LoginPage.jsx"));
